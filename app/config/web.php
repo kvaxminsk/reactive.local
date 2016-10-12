@@ -30,10 +30,13 @@ $config = [
         ],
         'assetManager' => [
             // uncomment the following line if you want to auto update your assets (unix hosting only)
-            //'linkAssets' => true,
+            'linkAssets' => true,
             'bundles' => [
                 'yii\web\JqueryAsset' => [
-                    'js' => [YII_DEBUG ? 'jquery.js' : 'jquery.min.js'],
+                    'sourcePath' => null,   // отключение дефолтного jQuery
+                    'js' => [
+                        '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js', // добавление вашей версии
+                    ]
                 ],
                 'yii\bootstrap\BootstrapAsset' => [
                     'css' => [YII_DEBUG ? 'css/bootstrap.css' : 'css/bootstrap.min.css'],
@@ -41,6 +44,29 @@ $config = [
                 'yii\bootstrap\BootstrapPluginAsset' => [
                     'js' => [YII_DEBUG ? 'js/bootstrap.js' : 'js/bootstrap.min.js'],
                 ],
+            ],
+        ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+
+//                '/'=>'/main/index',
+//                'about_us'=>'/main/about-us',
+//                'our_pharmacy'=>'/main/our-pharmacy',
+//                'single_pharmacy'=>'/main/single-pharmacy',
+//                'single_news'=>'/main/single-news',
+//                'vacansy'=>'/main/vacansy',
+                'contacts'=>'/site/contacts',
+                'contact'=>'/site/contact',
+//                'partners'=>'/main/partners',
+//                'news'=>'/main/news',
+//                'pharmacy_map'=>'/main/pharmacy-map',
+//                'stocks'=>'main/stocks',
+//                'single_stocks'=>'/main/single-stocks',
+//                'contactform'=>'/main/contact',
+//                '' => '/main/index',
+
             ],
         ],
         'log' => [
