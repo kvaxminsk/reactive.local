@@ -20,7 +20,37 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+
+        $countProjectsInfo=explode(" ", Text::get('count-projects-info'));
+        $countExperienceInfo = explode(" ", Text::get('count-experience-info'));
+        $countClientsInfo = explode(" ", Text::get('count-clients-info'));
+
+        $countProjects = str_split($countProjectsInfo[0]);   /// return first string(number), then delete it from array and return text
+        unset($countProjectsInfo[0]);
+        $projectsTitle = $countProjectsInfo;
+
+        $countExperienceYear = str_split($countExperienceInfo[0]);
+        unset($countExperienceInfo[0]);
+        $experienceTitle = $countExperienceInfo;
+
+        $countClients = str_split($countClientsInfo[0]);
+        unset($countClientsInfo[0]);
+        $clientsTitle = $countClientsInfo;
+
+
+//        $pages = Page::getAllPages();
+
+
+        return $this->render('index',[
+            'countProjects'=>$countProjects,
+            'projectsTitle'=>$projectsTitle,
+            'countExperienceYear'=>$countExperienceYear,
+            'experienceTitle'=>$experienceTitle,
+            'countClients'=>$countClients,
+            'clientsTitle'=>$clientsTitle,
+//            'pages'=>$pages,
+
+        ]);
     }
 
     public function actionContacts()
